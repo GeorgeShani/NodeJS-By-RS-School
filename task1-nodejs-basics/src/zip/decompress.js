@@ -1,5 +1,5 @@
 import { createReadStream, createWriteStream } from "fs";
-import { createGzip } from "zlib";
+import { createGunzip } from "zlib";
 import { join } from "path";
 
 const decompress = async () => {
@@ -12,11 +12,11 @@ const decompress = async () => {
   // Create a writable stream to write decompressed data
   const writeStream = createWriteStream(destinationPath);
 
-  // Create a Gzip transform stream
-  const gzip = createGzip();
+  // Create a Gunzip transform stream
+  const gunzip = createGunzip();
 
   // Pipe the streams: read -> gzip -> write
-  readStream.pipe(gzip).pipe(writeStream);
+  readStream.pipe(gunzip).pipe(writeStream);
 
   // Handle stream events (e.g., when finished or error occurs)
   writeStream.on("finish", () => {
