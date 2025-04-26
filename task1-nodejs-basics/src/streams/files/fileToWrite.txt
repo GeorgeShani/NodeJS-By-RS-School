@@ -1,0 +1,2 @@
+Hello from NodeJS Console!
+Great to have an opportunity to learn NodeJS at RS School
