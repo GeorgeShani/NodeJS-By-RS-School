@@ -3,6 +3,7 @@ import { createHash } from "crypto";
 import { join } from "path";
 
 const calculateHash = async () => {
+  // Construct the full path to the file
   const filePath = join("src", "hash", "files", "fileToCalculateHashFor.txt");
 
   const hash = createHash("sha256"); // Create SHA256 hash instance
