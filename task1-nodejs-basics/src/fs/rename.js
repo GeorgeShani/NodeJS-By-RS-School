@@ -9,7 +9,7 @@ const rename = async () => {
     // Check if 'wrongFilename.txt' exists
     await fs.access(oldPath);
 
-    // Check id 'properFilename.md already exists'
+    // Check if 'properFilename.md already exists'
     try {
       await fs.access(newPath);
       // If access succeeds, it means 'properFilename.md' exists, so we throw error
