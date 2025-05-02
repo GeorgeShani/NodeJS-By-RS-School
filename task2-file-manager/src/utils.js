@@ -18,6 +18,7 @@ const resolveFilePath = (inputPath) => {
     : path.join(process.cwd(), inputPath);
 };
 
+// Check if a file exists and is a file (not a directory)
 const fileExists = (filePath) => {
   const resolvedPath = resolveFilePath(filePath);
   return fs.existsSync(resolvedPath) && fs.statSync(resolvedPath).isFile();
@@ -29,4 +30,15 @@ const directoryExists = (dirPath) => {
   return fs.existsSync(resolvedPath) && fs.statSync(resolvedPath).isDirectory();
 };
 
-export { parseArgs, resolveFilePath, fileExists, directoryExists };
+// Print current working directory
+const printCurrentDir = () => {
+  console.log(`You are currently in ${process.cwd()}`);
+};
+
+export {
+  parseArgs,
+  resolveFilePath,
+  fileExists,
+  directoryExists,
+  printCurrentDir,
+};
