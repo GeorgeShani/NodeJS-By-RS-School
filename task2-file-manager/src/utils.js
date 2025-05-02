@@ -1,5 +1,6 @@
 import path from "path";
 import fs from "fs";
+import os from "os";
 
 // Parse CLI arguments
 const parseArgs = () => {
@@ -32,7 +33,14 @@ const directoryExists = (dirPath) => {
 
 // Print current working directory
 const printCurrentDir = () => {
-  console.log(`\nYou are currently in ${process.cwd()}`);
+  const homeDir = os.homedir();
+  let currentDir = process.cwd();
+  
+  if (currentDir.startsWith(homeDir)) {
+    currentDir = currentDir.replace(homeDir, "~");
+  }
+
+  console.log(`\n📁 Current Directory: ${currentDir}`);
 };
 
 // Parse command respecting quotes
