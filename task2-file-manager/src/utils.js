@@ -32,7 +32,7 @@ const directoryExists = (dirPath) => {
 
 // Print current working directory
 const printCurrentDir = () => {
-  console.log(`You are currently in ${process.cwd()}`);
+  console.log(`\nYou are currently in ${process.cwd()}`);
 };
 
 export {
