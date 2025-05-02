@@ -5,7 +5,7 @@ const getOSInfo = (flag) => {
   try {
     switch (flag) {
       case "--EOL":
-        console.log(JSON.stringify(os.EOL));
+        console.log(`EOL character on this OS: [${JSON.stringify(os.EOL)}]`);
         break;
       case "--cpus":
         const cpus = os.cpus();
@@ -15,13 +15,13 @@ const getOSInfo = (flag) => {
         });
         break;
       case "--homedir":
-        console.log(os.homedir());
+        console.log(`OS Home directory: ${os.homedir()}`);
         break;
       case "--username":
-        console.log(os.userInfo().username);
+        console.log(`OS Username: ${os.userInfo().username}`);
         break;
       case "--architecture":
-        console.log(process.arch);
+        console.log(`OS Architecture: ${process.arch}`);
         break;
       default:
         throw new Error("Invalid OS info parameter");
