@@ -33,14 +33,7 @@ const directoryExists = (dirPath) => {
 
 // Print current working directory
 const printCurrentDir = () => {
-  const homeDir = os.homedir();
-  let currentDir = process.cwd();
-  
-  if (currentDir.startsWith(homeDir)) {
-    currentDir = currentDir.replace(homeDir, "~");
-  }
-
-  console.log(`\n📁 Current Directory: ${currentDir}`);
+  console.log(`\n📁 Current Directory: ${process.cwd()}`);
 };
 
 // Parse command respecting quotes
