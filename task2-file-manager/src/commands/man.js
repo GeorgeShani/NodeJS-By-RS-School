@@ -132,6 +132,13 @@ const commandDocs = {
     details:
       "Safely closes the File Manager session and displays a farewell message.",
   },
+  clear: {
+    description: "Clear the terminal screen",
+    syntax: "clear",
+    example: "clear",
+    details:
+      "Clears all output from the terminal and resets the prompt position.",
+  },
 };
 
 // Display manual information for all commands or a specific command
@@ -184,6 +191,7 @@ const showManual = (commandName) => {
     console.log("compress <src> <dst>    - Compress file with Brotli");
     console.log("decompress <src> <dst>  - Decompress Brotli file");
     console.log("man [command]      - Show help for all or specific command");
+    console.log("clear              - Clear the terminal screen");
     console.log(".exit              - Exit the File Manager");
 
     console.log(
