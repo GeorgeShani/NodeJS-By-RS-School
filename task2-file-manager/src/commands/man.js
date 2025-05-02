@@ -1,135 +1,136 @@
 /**
  * Manual pages for File Manager commands
- * Provides detailed information about available commands and their usage
+ * Displays helpful information about all supported commands and their usage
  */
 
 // Command documentation with descriptions, syntax, and examples
 const commandDocs = {
   // Navigation commands
   up: {
-    description: "Navigate up one directory level",
+    description: "Move up one directory level",
     syntax: "up",
     example: "up",
     details:
-      "Moves to the parent directory of the current working directory. Cannot go above root directory.",
+      "Navigates to the parent of the current working directory. You cannot move above the root directory.",
   },
   cd: {
-    description: "Change current directory",
+    description: "Change the current directory",
     syntax: "cd <path_to_directory>",
     example: "cd Documents",
     details:
-      "Changes the current working directory to the specified path. Path can be absolute or relative.",
+      "Changes your working directory to the given path. The path may be absolute or relative.",
   },
   ls: {
-    description: "List directory contents",
+    description: "List contents of the current directory",
     syntax: "ls",
     example: "ls",
     details:
-      "Displays a table with name, type, size, and last modified date of files and directories. Directories are listed first, followed by files, both sorted alphabetically.",
+      "Displays a table with name, type, size, and last modified date. Lists directories first, followed by files, sorted alphabetically.",
   },
 
   // File operations
   cat: {
-    description: "Display file contents",
+    description: "Read and display a file's content",
     syntax: "cat <path_to_file>",
     example: "cat example.txt",
     details:
-      "Reads the content of the specified file and displays it in the console. Uses Readable stream for efficient reading.",
+      "Outputs the contents of a file to the console using a readable stream.",
   },
   add: {
-    description: "Create a new empty file",
+    description: "Create an empty file",
     syntax: "add <new_file_name>",
     example: "add newfile.txt",
     details:
-      "Creates a new empty file with the specified name in the current working directory.",
+      "Creates a new, empty file in your current working directory with the specified name.",
   },
   mkdir: {
     description: "Create a new directory",
     syntax: "mkdir <new_directory_name>",
     example: "mkdir new_folder",
     details:
-      "Creates a new directory with the specified name in the current working directory.",
+      "Creates a new directory inside the current working directory with the given name.",
   },
   rn: {
-    description: "Rename a file",
+    description: "Rename an existing file",
     syntax: "rn <path_to_file> <new_filename>",
     example: "rn old.txt new.txt",
     details:
-      "Renames the specified file to the new filename. The file content remains unchanged.",
+      "Renames a file without altering its content. The new name is applied in the same location.",
   },
   cp: {
-    description: "Copy a file",
+    description: "Copy a file to a new location",
     syntax: "cp <path_to_file> <path_to_new_directory>",
     example: "cp file.txt backups/",
     details:
-      "Copies the specified file to the target directory. Uses Readable and Writable streams for efficient copying.",
+      "Copies a file to the specified directory using readable and writable streams for better performance.",
   },
   mv: {
-    description: "Move a file",
+    description: "Move a file to a new location",
     syntax: "mv <path_to_file> <path_to_new_directory>",
     example: "mv file.txt archive/",
     details:
-      "Moves the specified file to the target directory. The file is copied to the new location and deleted from the original location.",
+      "Transfers a file to the new directory by copying it first, then deleting it from the original location.",
   },
   rm: {
-    description: "Remove a file",
+    description: "Delete a file",
     syntax: "rm <path_to_file>",
     example: "rm file.txt",
-    details: "Deletes the specified file from the file system.",
+    details: "Removes the specified file permanently from the file system.",
   },
 
   // OS information
   os: {
-    description: "Display operating system information",
+    description: "Show system-related information",
     syntax: "os <option>",
     example: "os --cpus",
     details:
-      "Displays information about the operating system. Available options:\n" +
-      "  --EOL: Display End-Of-Line character\n" +
-      "  --cpus: Display CPU information (count, model, clock rate)\n" +
-      "  --homedir: Display home directory path\n" +
-      "  --username: Display current system username\n" +
-      "  --architecture: Display CPU architecture",
+      "Displays system info based on the option provided:\n" +
+      "  --EOL: Show the End-Of-Line marker used by your OS\n" +
+      "  --cpus: List CPU model, speed, and core count\n" +
+      "  --homedir: Display the current user's home directory\n" +
+      "  --username: Show your system username\n" +
+      "  --architecture: Print the CPU architecture (e.g., x64)",
   },
 
   // Hash calculation
   hash: {
-    description: "Calculate file hash",
+    description: "Generate SHA-256 hash of a file",
     syntax: "hash <path_to_file>",
     example: "hash document.pdf",
-    details: "Calculates and displays the SHA-256 hash of the specified file.",
+    details:
+      "Calculates the SHA-256 cryptographic hash of the provided file and outputs it to the console.",
   },
 
   // Compression
   compress: {
-    description: "Compress a file using Brotli algorithm",
+    description: "Compress a file using Brotli",
     syntax: "compress <path_to_file> <path_to_destination>",
     example: "compress large.txt compressed.br",
     details:
-      "Compresses the source file using the Brotli algorithm and saves it to the destination path. Uses Streams API for efficiency.",
+      "Compresses a file using the Brotli algorithm and saves the result to the specified destination using streams.",
   },
   decompress: {
     description: "Decompress a Brotli-compressed file",
     syntax: "decompress <path_to_file> <path_to_destination>",
     example: "decompress compressed.br extracted.txt",
     details:
-      "Decompresses the Brotli-compressed file and saves it to the destination path. Uses Streams API for efficiency.",
+      "Uncompresses a Brotli file and writes the output to the destination. Uses stream processing for performance.",
   },
 
   // Help/exit commands
   man: {
-    description: "Display manual pages for commands",
+    description: "Display the help manual",
     syntax: "man [command]",
     example: "man cp",
     details:
-      "Without arguments, lists all available commands. With a command name, displays detailed information about that specific command.",
+      "Without arguments, lists all available commands. Provide a command name to get detailed help on it.",
   },
   ".exit": {
     description: "Exit the File Manager",
     syntax: ".exit",
     example: ".exit",
     details:
-      "Terminates the File Manager application and displays a goodbye message.",
+      "Safely closes the File Manager session and displays a farewell message.",
   },
 };
 
@@ -158,37 +159,35 @@ const showManual = (commandName) => {
     console.log("\n=== File Manager Commands ===");
 
     console.log("\n-- Navigation --");
-    console.log("up                 - Navigate up one directory level");
-    console.log("cd <path>          - Change current directory");
-    console.log("ls                 - List directory contents");
+    console.log("up                 - Move up one directory level");
+    console.log("cd <path>          - Change current working directory");
+    console.log("ls                 - List contents of the current directory");
 
     console.log("\n-- File Operations --");
-    console.log("cat <file>         - Display file contents");
+    console.log("cat <file>         - Read and display a file");
     console.log("add <file>         - Create a new empty file");
-    console.log("mkdir <dir>        - Create a new directory");
+    console.log("mkdir <dir>        - Make a new directory");
     console.log("rn <file> <new>    - Rename a file");
-    console.log("cp <file> <dir>    - Copy a file to directory");
-    console.log("mv <file> <dir>    - Move a file to directory");
-    console.log("rm <file>          - Remove a file");
+    console.log("cp <file> <dir>    - Copy a file to a directory");
+    console.log("mv <file> <dir>    - Move a file to a directory");
+    console.log("rm <file>          - Delete a file");
 
     console.log("\n-- OS Information --");
-    console.log("os --EOL           - Display End-Of-Line character");
-    console.log("os --cpus          - Display CPU information");
-    console.log("os --homedir       - Display home directory path");
-    console.log("os --username      - Display system username");
-    console.log("os --architecture  - Display CPU architecture");
+    console.log("os --EOL           - Show End-Of-Line character");
+    console.log("os --cpus          - Show CPU details");
+    console.log("os --homedir       - Show your home directory");
+    console.log("os --username      - Show current user");
+    console.log("os --architecture  - Show CPU architecture");
 
     console.log("\n-- Other Utilities --");
-    console.log("hash <file>        - Calculate file hash (SHA-256)");
-    console.log("compress <src> <dst>    - Compress file using Brotli");
+    console.log("hash <file>        - Generate SHA-256 hash of file");
+    console.log("compress <src> <dst>    - Compress file with Brotli");
     console.log("decompress <src> <dst>  - Decompress Brotli file");
-    console.log(
-      "man [command]      - Display this help or specific command help"
-    );
+    console.log("man [command]      - Show help for all or specific command");
     console.log(".exit              - Exit the File Manager");
 
     console.log(
-      "\nFor detailed information about a command, type: man <command>"
+      "\n📘 For detailed help about a specific command, type: man <command>"
     );
     console.log("================================================\n");
   } catch (error) {
