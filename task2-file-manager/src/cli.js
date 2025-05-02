@@ -32,6 +32,17 @@ const setupCLI = (username) => {
     exitHandler(username, cliInterface);
   });
 
+  // Handle Ctrl + L for clear screen
+  process.stdin.setRawMode(true);
+  process.stdin.on("data", (key) => {
+    if (key.toString() === "\x0c") { // Ctrl + L
+      console.clear();
+
+      printCurrentDir()
+      cliInterface.prompt();
+    }
+  });
+
   cliInterface.on("line", async (input) => {
     try {
       // Handle exit with ".exit" command
@@ -42,10 +53,7 @@ const setupCLI = (username) => {
 
       await processCommand(input.trim());
     } catch (error) {
-      console.error("Operation failed");
-      if (error.message) {
-        console.error(error.message);
-      }
+      console.error(`"Operation failed": ${error.message}`);
     }
 
     printCurrentDir();
@@ -156,13 +164,17 @@ const processCommand = async (input) => {
         showManual(commandArgs[0]);
         break;
 
+      case "clear":
+        console.clear();
+        break;
+
       default:
         console.error("Invalid input");
     }
   } catch (error) {
-    console.error("Operation failed");
+    console.error(`Operation failed for command: '${input}'`);
     if (error.message) {
-      console.error(error.message);
+      console.error(`Error: ${error.message}`);
     }
   }
 };
