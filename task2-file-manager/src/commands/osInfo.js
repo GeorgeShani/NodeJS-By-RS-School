@@ -15,13 +15,13 @@ const getOSInfo = (flag) => {
         });
         break;
       case "--homedir":
-        console.log(`OS Home directory: ${os.homedir()}`);
+        console.log(`Home directory: ${os.homedir()}`);
         break;
       case "--username":
-        console.log(`OS Username: ${os.userInfo().username}`);
+        console.log(`System Username: ${os.userInfo().username}`);
         break;
       case "--architecture":
-        console.log(`OS Architecture: ${process.arch}`);
+        console.log(`CPU Architecture: ${process.arch}`);
         break;
       default:
         throw new Error("Invalid OS info parameter");
