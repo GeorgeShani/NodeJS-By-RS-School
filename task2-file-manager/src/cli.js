@@ -2,6 +2,7 @@ import { compressFile, decompressFile } from "./commands/compression.js";
 import { printCurrentDir, parseCommandWithQuotes } from "./utils.js";
 import { calculateHash } from "./commands/hash.js";
 import { getOSInfo } from "./commands/osInfo.js";
+import { showManual } from "./commands/man.js";
 import readline from "readline";
 import {
   navigateUp,
@@ -41,9 +42,9 @@ const setupCLI = (username) => {
 
       await processCommand(input.trim());
     } catch (error) {
-      console.log("Operation failed");
+      console.error("Operation failed");
       if (error.message) {
-        console.log(error.message);
+        console.error(error.message);
       }
     }
 
@@ -55,7 +56,9 @@ const setupCLI = (username) => {
 };
 
 const exitHandler = (username, cliInterface) => {
-  console.log(`👋 Farewell, ${username}! Thanks for using the File Manager. Until next time — stay organized!`);
+  console.log(
+    `👋 Farewell, ${username}! Thanks for using the File Manager. Until next time — stay organized!`
+  );
   cliInterface.close();
   process.exit(0);
 };
@@ -148,11 +151,19 @@ const processCommand = async (input) => {
         await decompressFile(commandArgs[0], commandArgs[1]);
         break;
 
+      // Help/Manual
+      case "man":
+        showManual(commandArgs[0]);
+        break;
+
       default:
         console.error("Invalid input");
     }
   } catch (error) {
     console.error("Operation failed");
+    if (error.message) {
+      console.error(error.message);
+    }
   }
 };
 
