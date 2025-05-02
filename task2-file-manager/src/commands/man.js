@@ -191,8 +191,8 @@ const showManual = (commandName) => {
     console.log("compress <src> <dst>    - Compress file with Brotli");
     console.log("decompress <src> <dst>  - Decompress Brotli file");
     console.log("man [command]      - Show help for all or specific command");
-    console.log("clear              - Clear the terminal screen");
-    console.log(".exit              - Exit the File Manager");
+    console.log("clear              - Clear the terminal screen (Ctrl + L)");
+    console.log(".exit              - Exit the File Manager (Ctrl + C)");
 
     console.log(
       "\n📘 For detailed help about a specific command, type: man <command>"
