@@ -9,7 +9,8 @@ const initFileManager = () => {
   // Set initial working directory to user's home directory
   process.chdir(os.homedir());
 
-  console.log(`Welcome to the File Manager, ${username}!`);
+  console.log(`👋 Hello, ${username}! Welcome to your File Manager.`);
+  console.log(`ℹ️  Type "man" to view the list of available commands.`);
   printCurrentDir();
 
   // Set up CLI interface
