@@ -117,7 +117,7 @@ const commandDocs = {
       "Uncompresses a Brotli file and writes the output to the destination. Uses stream processing for performance.",
   },
 
-  // Help/exit commands
+  // Help/clear/exit commands
   man: {
     description: "Display the help manual",
     syntax: "man [command]",
