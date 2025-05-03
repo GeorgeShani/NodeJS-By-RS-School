@@ -57,7 +57,7 @@ const setupCLI = (username) => {
     showPrompt(cliInterface);
   });
 
-  showPrompt(cliInterface);
+  cliInterface.prompt();
 };
 
 const exitHandler = (username, cliInterface) => {
