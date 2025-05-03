@@ -37,9 +37,7 @@ const setupCLI = (username) => {
   process.stdin.on("data", (key) => {
     if (key.toString() === "\x0c") { // Ctrl + L
       console.clear();
-
-      printCurrentDir()
-      cliInterface.prompt();
+      showPrompt(cliInterface);
     }
   });
 
@@ -56,11 +54,10 @@ const setupCLI = (username) => {
       console.error(`"Operation failed": ${error.message}`);
     }
 
-    printCurrentDir();
-    cliInterface.prompt();
+    showPrompt(cliInterface);
   });
 
-  cliInterface.prompt();
+  showPrompt(cliInterface);
 };
 
 const exitHandler = (username, cliInterface) => {
@@ -69,6 +66,11 @@ const exitHandler = (username, cliInterface) => {
   );
   cliInterface.close();
   process.exit(0);
+};
+
+const showPrompt = (cliInterface) => { 
+  printCurrentDir();
+  cliInterface.prompt();
 };
 
 // Process user commands
