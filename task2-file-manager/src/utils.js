@@ -1,6 +1,5 @@
 import path from "path";
 import fs from "fs";
-import os from "os";
 
 // Parse CLI arguments
 const parseArgs = () => {
