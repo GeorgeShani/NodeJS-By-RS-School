@@ -72,3 +72,13 @@ export const deleteUser = async (id: string): Promise<boolean> => {
   
   return users.length < initialLength;
 };
+
+// Helper function to get a reference to the users array (for clustering)
+export const getUsersRef = (): User[] => {
+  return users;
+};
+
+// Helper function to set users array (for clustering)
+export const setUsers = (newUsers: User[]): void => {
+  users = [...newUsers];
+};
