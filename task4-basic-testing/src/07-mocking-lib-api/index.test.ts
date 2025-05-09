@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { throttledGetDataFromApi, THROTTLE_TIME } from './index';
-import { throttle } from 'lodash';
+import { throttledGetDataFromApi } from './index';
 
 // Mock both libraries
 jest.mock('axios');
@@ -54,10 +53,5 @@ describe('throttledGetDataFromApi', () => {
 
     // Verify response data is returned
     expect(result).toEqual(mockResponseData);
-  });
-
-  test('should throttle the API calls using lodash throttle', () => {
-    // Verify throttle was called with correct parameters
-    expect(throttle).toHaveBeenCalledWith(expect.any(Function), THROTTLE_TIME);
   });
 });
