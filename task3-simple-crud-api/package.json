@@ -8,7 +8,7 @@
     "start:prod": "npm run build && node dist/index.js",
     "start:multi": "ts-node src/cluster.ts",
     "build": "webpack",
-    "test": "jest"
+    "test": "jest --config jest.config.js"
   },
   "keywords": [
     "api",
